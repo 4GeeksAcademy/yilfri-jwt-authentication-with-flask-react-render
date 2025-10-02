@@ -5,15 +5,14 @@ services:
     env: python
     plan: free
     numInstances: 1
-
+    
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
       npm install && npm run build
-
-    # ESTA LÍNEA DEBE SER EXACTAMENTE ASÍ:
-    startCommand: "gunicorn src.wsgi:app --bind 0.0.0.0:$PORT"
-
+      
+    startCommand: "gunicorn src.wsgi:application --bind 0.0.0.0:$PORT"
+    
     envVars:
       - key: VITE_BASENAME
         value: /
