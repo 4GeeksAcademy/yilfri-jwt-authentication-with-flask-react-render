@@ -5,16 +5,16 @@ services:
     env: python
     plan: free
     numInstances: 1
-    
+
     # Build command CORREGIDO:
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
       npm install && npm run build
-      
+
     # Start command CORREGIDO:
     startCommand: "gunicorn src.wsgi:app --bind 0.0.0.0:$PORT"
-    
+
     envVars:
       - key: VITE_BASENAME
         value: /
